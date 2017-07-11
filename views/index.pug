@@ -1,0 +1,390 @@
+extends layout
+
+block content
+    #myCarousel.carousel.slide(data-ride='carousel', data-interval='5500')
+
+        ol.carousel-indicators
+            li.active(data-target='#myCarousel', data-slide-to='0')
+            li(data-target='#myCarousel', data-slide-to='1')
+            li(data-target='#myCarousel', data-slide-to='2')
+
+        .carousel-inner(role='listbox')
+            .item.active
+                img(src='images/indigo-pearl-title-slide2.jpg', alt='The Indigo Pearl Boutique', width='1920', height='1080')
+                .carousel-caption
+            .item
+                img(src='images/indigo-pearl-title-slide.jpg', alt='imageTextHere', width='1920', height='1080')
+                .carousel-caption
+                    h3 title
+                    p some text here
+            .item
+                img(src='images/indigo-pearl-title-slide3.jpg', alt='imageTextHere', width='1920', height='1080')
+                .carousel-caption
+                    h3 title
+                    p some text here
+
+        a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+            span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+            span.sr-only Previous
+        a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+            span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+            span.sr-only Next
+
+    #about.container.text-center
+        h3 The Indigo Pearl Boutique
+        p
+            em catch phrase or not
+        p
+            | The Indigo Pearl is an artisan boutique that specializes in high-end gifts, and designs of distinction. we offer novelty items and hand crafted products including but not limited to:  jewelry, art,  soaps, and leather products. Our shop also includes unique furniture designs at affordable north carolina prices and other accessories for the home.
+        br
+
+    #artists.bg-1
+        .container
+            h3.text-center SOME OF OUR ARTISTS
+            .row.text-center
+                .col-sm-4
+                    .thumbnail
+                        img(src='images/don-haywood.png', alt='Don Haywood', width='400', height='100')
+                        p.font-indigo
+                            strong Don Haywood
+                        p.pspace
+                            | Sold all over the US, Don's pieces carry his signature and creation date making each one unique.
+                    div.btn-space
+                        button.btn(data-toggle='modal', data-target='#myModal') More Info
+                .col-sm-4
+                    .thumbnail
+                        img(src='images/sandra-gittleman.png', alt='Sandra Gettleman', width='400', height='100')
+                        p.font-indigo
+                            strong Sandra Gettleman
+                        p.pspace
+                            | An incredibly talented artist from New England, whose paintings light up any room.
+                    div.btn-space
+                        button.btn(data-toggle='modal', data-target='#myModal') More Info
+                .col-sm-4
+                    .thumbnail
+                        img(src='images/jennifer-steagall.jpeg', alt='Jennifer Steagall', width='400', height='100')
+                        p.font-indigo
+                            strong Jennifer Steagall
+                        p.pspace
+                            | Jennifer uses here passion to create with a variety of mediums like ink, pencil, oils and acrylics.
+                    div.btn-space
+                        button.btn(data-toggle='modal', data-target='#myModal') More Info
+                .buffer
+                    .row.text-center
+                        .col-md-12
+                            h3.text-center.buffer
+                                | Local art works on display.
+                                br
+                                br
+                                |         Come visit us today!
+                                br
+                                br
+
+    #myModal.modal.fade(role='dialog')
+        .modal-dialog
+
+            h1 Coming Soon
+
+    #contact.container
+        h3.text-center Testimonials
+        ul.nav.nav-tabs
+            li.active
+                a(data-toggle='tab', href='#home') "Loved"
+            li
+                a(data-toggle='tab', href='#menu1') "Great Quality"
+            li
+                a(data-toggle='tab', href='#menu2') "Stunning"
+        .tab-content
+            #home.tab-pane.fade.in.active
+                h2.font-indigo --A. Banzhof
+                p
+                    | "Loved shopping at the Indigo Pearl, they were so helpful and passionate. I bought my now favorite leather bag at the Autumn Treasures show in Waxhaw, NC. Haven't used another bag since! "
+            #menu1.tab-pane.fade
+                h2.font-indigo --C. Dalton
+                p
+                    | "Reasonable prices for great quality! I loved that the girls made the leather bags by hand."
+            #menu2.tab-pane.fade
+                h2.font-indigo --D. Stelzl
+                p
+                    | "Deann's passion and artsy-eye is positively stunning! The pieces of art that she finds and display illustrate her detail to things that most of us would miss. Each piece of unique jewelry that I have been able to pick up and examine have been absolutely exquisite. The Indigo Pearl is defenitly the place to buy something special for someone special!"
+        br
+        h3.text-center Contact
+        p.text-center
+            em We love your feedback!
+        .row
+            .col-md-4
+                p Drop a note.
+                p
+                    span.glyphicon.glyphicon-map-marker
+                    | 101 E North Main St, Waxhaw, NC 28173
+                p
+                    span.glyphicon.glyphicon-phone
+                    | Phone: (704) 221.3769
+                p
+                    span.glyphicon.glyphicon-envelope
+                    | Email: mail@mail.com
+            .col-md-8
+                .row
+                    .col-sm-6.form-group
+                        input#name.form-control(name='name', placeholder='Name', type='text', required='')
+                    .col-sm-6.form-group
+                        input#email.form-control(name='email', placeholder='Email', type='email', required='')
+                textarea#comments.form-control(name='comments', placeholder='Comment', rows='5')
+                br
+                .row
+                    .col-md-12.form-group
+                        button.btn.pull-right(type='submit') Send
+                    br
+            br
+
+            .row.text-center
+            #googleMap.col-md-8
+            script.
+                function myMap() {
+                    var myCenter = new google.maps.LatLng(34.925231, -80.743625);
+                    var mapProp = {
+                        center: myCenter,
+                        zoom: 15,
+                        scrollwheel: false,
+                        draggable: false,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        styles: [
+                            {
+                                "featureType": "administrative",
+                                "elementType": "all",
+                                "stylers": [
+                                    {
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "lightness": 33
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "administrative.locality",
+                                "elementType": "labels.text.fill",
+                                "stylers": [
+                                    {
+                                        "color": "#4b0082"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "administrative.locality",
+                                "elementType": "labels.text.stroke",
+                                "stylers": [
+                                    {
+                                        "color": "#d7d2f0"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "landscape",
+                                "elementType": "all",
+                                "stylers": [
+                                    {
+                                        "color": "#f5ebdc"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.business",
+                                "elementType": "all",
+                                "stylers": [
+                                    {
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "hue": "#3200ff"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.business",
+                                "elementType": "labels.text.stroke",
+                                "stylers": [
+                                    {
+                                        "color": "#ffffff"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.park",
+                                "elementType": "geometry",
+                                "stylers": [
+                                    {
+                                        "color": "#c5dac6"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.park",
+                                "elementType": "labels",
+                                "stylers": [
+                                    {
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "lightness": 20
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.school",
+                                "elementType": "geometry",
+                                "stylers": [
+                                    {
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "color": "#7044a3"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.school",
+                                "elementType": "labels.text.stroke",
+                                "stylers": [
+                                    {
+                                        "color": "#ffffff"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road",
+                                "elementType": "all",
+                                "stylers": [
+                                    {
+                                        "lightness": 20
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.highway",
+                                "elementType": "geometry",
+                                "stylers": [
+                                    {
+                                        "color": "#c5c6c6"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.arterial",
+                                "elementType": "geometry",
+                                "stylers": [
+                                    {
+                                        "color": "#a073f8"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.arterial",
+                                "elementType": "labels.text.fill",
+                                "stylers": [
+                                    {
+                                        "color": "#ffffff"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.arterial",
+                                "elementType": "labels.text.stroke",
+                                "stylers": [
+                                    {
+                                        "color": "#5737b8"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.local",
+                                "elementType": "geometry",
+                                "stylers": [
+                                    {
+                                        "color": "#beadf0"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.local",
+                                "elementType": "labels",
+                                "stylers": [
+                                    {
+                                        "lightness": "6"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.local",
+                                "elementType": "labels.text.fill",
+                                "stylers": [
+                                    {
+                                        "color": "#4b0082"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.local",
+                                "elementType": "labels.text.stroke",
+                                "stylers": [
+                                    {
+                                        "color": "#ffffff"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "transit.line",
+                                "elementType": "geometry",
+                                "stylers": [
+                                    {
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "color": "#4800ff"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "transit.line",
+                                "elementType": "geometry.stroke",
+                                "stylers": [
+                                    {
+                                        "color": "#8100f6"
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "water",
+                                "elementType": "all",
+                                "stylers": [
+                                    {
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "color": "#7479e4"
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                    var pinColor = "ffffff";
+                    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                        new google.maps.Size(21, 34),
+                        new google.maps.Point(0, 0),
+                        new google.maps.Point(10, 34));
+                    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+                        new google.maps.Size(40, 37),
+                        new google.maps.Point(0, 0),
+                        new google.maps.Point(12, 35));
+                    var marker = new google.maps.Marker({
+                        position: myCenter,
+                        map: map,
+                        icon: pinImage,
+                        shadow: pinShadow
+                    });
+                    marker.setMap(map);
+                }
+            script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBXilknjDEauoRQEIeRPUc3HeknljVkQCg&callback=myMap')
+    .col-md-8
+        p

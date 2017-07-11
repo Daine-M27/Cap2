@@ -54,6 +54,7 @@ function runServer() {
 });
 });
 }
+runServer();
 
 function closeServer() {
     return mongoose.disconnect().then(() => {

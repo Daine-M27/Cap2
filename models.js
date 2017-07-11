@@ -35,5 +35,22 @@ UserSchema.statics.hashPassword = function(password) {
 };
 
 const User = mongoose.model('User', UserSchema);
-
+console.log('iwashere');
+const aUser = User.create({
+    username: 'lkajsdf',
+    password: 'hash',
+    firstName: 'firstName22',
+    lastName: 'lastName22'
+});
+aUser.save((a,b) =>{
+    console.log(a,b)
+});
+    // User.create({
+    //     username: 'lkajsdf',
+    //     password: 'hash',
+    //     firstName: 'firstName22',
+    //     lastName: 'lastName22'
+    // },function(a,b) {
+    //     console.log(a,b);
+    // });
 module.exports = {User};

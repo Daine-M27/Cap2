@@ -1,0 +1,100 @@
+extends layout
+
+block content
+    .container
+        h3.text-left Administration Dashboard
+        br
+        .row
+            .col-sm-12.col-md-12
+                ul.nav.nav-tabs
+                    li.active
+                        a(data-toggle='tab', href='#menu0') Profile
+                    li
+                        a(data-toggle='tab', href='#menu1') Uploads
+                    li
+                        a(data-toggle='tab', href='#menu2') Users
+                .tab-content
+                    #menu0.tab-pane.fade.in.active
+                        .col-sm-6.col-md-6
+                            p.username
+                                strong User Name:
+                                span  somename
+
+                            p.first-name
+                                strong First Name:
+                                span  firstname
+                            p.last-name
+                                strong Last Name:
+                                span  lastname
+                        .col-sm-6.col-md-6
+                            img(src='', alt='', height='200', width='200')
+                        button.btn(data-toggle='modal', data-target='#editProfileModal') Edit Information
+                        button.btn(data-toggle='modal', data-target='#changePasswordModal') Change Password
+                    #menu1.tab-pane.fade
+                    #menu2.tab-pane.fade
+                        .col-sm-6.col-md-6
+                            form
+                                input(type='text', name='user', placeholder='Username')
+                                input(type='text', name='pass', placeholder='Password')
+                                input(type='text', name='first', placeholder='First Name')
+                                input(type='text', name='last', placeholder='Last Name')
+                                br
+                                button.btn() Create User
+                        .col-sm-6.col-md-6
+                            form
+                                input(type='text', name='user', placeholder='Username')
+                                br
+                                button.btn(data-toggle='modal', data-target='#removeUserModal') Remove User
+
+    #editProfileModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+            .loginmodal-container
+                h1 Edit Profile Info
+                br
+                form
+                    input.user-firstName(type='text', name='first', placeholder='First Name')
+                    input.user-LastName(type='text', name='last', placeholder='Last Name')
+                    input.user-email(type='email', name='email', placeholder='Email Address')
+                    .text-center
+                        button.btn() Submit
+
+    #changePasswordModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+            .loginmodal-container
+                h1 Change Password
+                br
+                form
+                    input.user-pass(type='password', name='pass', placeholder='Current Password')
+                    input.user-pass-new(type='password', name='pass', placeholder='New Password')
+                    .text-center
+                        button.btn() Change
+
+    #removeUserModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+            .loginmodal-container
+                h1 Remove User
+                br
+                form
+                    input.user-name(type='text', name='user', placeholder='Username')
+                    input.user-pass(type='password', name='pass', placeholder='Password')
+                    .text-center
+                        button.btn() Delete
+
+    #addUserModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+            .loginmodal-container
+                h1 Create User
+                br
+                form
+                    input.user-name(type='text', name='user', placeholder='Username')
+                    input.user-pass(type='password', name='pass', placeholder='Password')
+                    .text-center
+                        button.btn() Create User
+
+    #confirmationModal.modal.fade(tabindex='text', role='dialog',aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+            .loginmodal-container
+                h1.modal-label Success/Error
+                br
+                h3.modal-status status text!!!
+

@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('common'))
 
 app.use('/', index);
+//app.use('/admin', index)
 app.use('/users', users);
 app.use('/api', api);
 

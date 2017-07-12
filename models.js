@@ -42,9 +42,9 @@ const aUser = User.create({
     firstName: 'firstName22',
     lastName: 'lastName22'
 });
-aUser.save((a,b) =>{
-    console.log(a,b)
-});
+// aUser.save((a,b) =>{
+//     console.log(a,b)
+// });
     // User.create({
     //     username: 'lkajsdf',
     //     password: 'hash',

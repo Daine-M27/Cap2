@@ -11,9 +11,9 @@ router.get('/gallery', function(req, res, next){
 	res.render('gallery', {title: 'Gallery'});
 });
 
-// GET gallery page
-router.get('/login', function(req, res, next){
-    res.render('login', {title: 'Login'});
+// GET admin dashboard page
+router.get('/admindash', function(req, res, next){
+    res.render('admindashboard', {title: 'Administration Dashboard'});
 });
 
 module.exports = router;

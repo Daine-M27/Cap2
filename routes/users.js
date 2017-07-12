@@ -4,6 +4,7 @@ const jsonParser = require('body-parser').json;
 const passport = require('passport');
 
 const {User} = require('../models');
+console.log(User.model);
 const router = express.Router();
 //router.use(jsonParser);
 
@@ -31,16 +32,17 @@ const basicStrategy = new BasicStrategy((username, password, callback) => {
         .catch(err => callback(err));
 });
 
-router.get('/test', function(req, res) {
-    console.log('message');
-    res.send(200);
+// router.get('/test', function(req, res) {
+//     console.log('message');
+//     res.send(200);
+//
+// });
 
-});
-
-passport.use(basicStrategy);
-router.use(passport.initialize());
+// passport.use(basicStrategy);
+// router.use(passport.initialize());
 
 router.post('/', (req, res) => {
+   console.log(req.body);
     if (!req.body) {
         return res.status(400).json({message: 'No request body'});
     }
@@ -50,6 +52,7 @@ router.post('/', (req, res) => {
     }
 
     let {username, password, firstName, lastName} = req.body;
+    console.log(username, password, firstName, lastName);
 
     if (typeof username !== 'string') {
         return res.status(422).json({message: 'Incorrect field type: username'});
@@ -74,13 +77,17 @@ router.post('/', (req, res) => {
     if (password === '') {
         return res.status(422).json({message: 'Incorrect field length: password'});
     }
-
+    console.log('here were are');
     // check for existing user
-    return User
-        .find({username})
+        User
+        .find({username}, function(a,b) {
+            console.log(a,b)
+        })
         .count()
         .exec()
         .then(count => {
+            console.log(count);
+
             if (count > 0) {
                 return res.status(422).json({message: 'username already taken'});
             }
@@ -88,12 +95,15 @@ router.post('/', (req, res) => {
             return User.hashPassword(password)
         })
         .then(hash => {
+            console.log("iwashere");
             return User
                 .create({
                     username: username,
                     password: hash,
                     firstName: firstName,
                     lastName: lastName
+                },function(a,b) {
+                    console.log(a,b);
                 })
         })
         .then(user => {
@@ -106,10 +116,10 @@ router.post('/', (req, res) => {
 
 
 
-
-router.get('/me', passport.authenticate('basic', {session: false}),
-    (req, res) => res.json({user: req.user.apiRepr()})
-);
+//
+// router.get('/me', passport.authenticate('basic', {session: false}),
+//     (req, res) => res.json({user: req.user.apiRepr()})
+// );
 
 
 module.exports = router;
